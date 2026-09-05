@@ -12,9 +12,10 @@
   "blurPlaceholderOutputDir": "public/assets/blur",
 
   "favicon": {
-    "enabled": false,
+    "enabled": true,
     "source": "logo.png",
-    "outputDir": "public"
+    "outputDir": "public",
+    "appName": "Boomark"
   },
 
   "ffmpegBin": "/opt/homebrew/bin/ffmpeg",

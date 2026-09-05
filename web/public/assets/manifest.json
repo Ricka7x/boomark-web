@@ -9,15 +9,33 @@
     "blurPlaceholderWidth": 20,
     "blurPlaceholderOutputDir": "public/assets/blur",
     "favicon": {
-      "enabled": false,
+      "enabled": true,
       "source": "logo.png",
-      "outputDir": "public"
+      "outputDir": "public",
+      "appName": "Boomark"
     }
   },
   "assets": {
-    "images": {},
+    "images": {
+      "logo.png": {
+        "source": "assets-src/logo.png",
+        "outputs": {
+          "webp": "/assets/logo.webp",
+          "avif": "/assets/logo.avif"
+        },
+        "blurHash": "LQGIo.t700Rjofj[M{WB00WB~qof",
+        "placeholder": {
+          "dataUri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEkElEQVR4nHWVW0xUVxSG9zn7zMyZgSkzzE1LLGpwqOAELV5gaNW0gTYK2BeV0oRCbSx3+uDlwT4JVMBGm3jpg6KINhKBKrW8yVBovCQOpMNFXohDMgnF4cHAkGAY5/zN2oBpm/bhT9ZZa+3vrLP22vswxvhHjMkVjPFLjMn9jPEpSVIWONfH9HojjMY4mExmIbLJRzHKoVy2vOYiY3L5MmvZaGFMvidJPMC5flZVTa8SEqwxl+ttJCdvQEqKW4hsl2stKGYwmF5RriTxAGPy3RVGOVuhk8PPuT5kNMYvOBxrops2pWo7d2YhN/djFBYeEMrNzQP5KOZwuKKUy7k+xBh/usK4QBX6GOMBWVZCqho353Suiaane7S8vE9QVvYlTpw4idOn64WOHz+J0tIy8ZK0NI9GL1bVuDlayxj/gzG5jyoMMsbDimJYsFptS6mpmwWssrIKZ89+j1u3fkJPTw/u3evBzZu30NJyFhUVlQLqdr+rWSy2JUUxRBjjLxjjzwkYkSS+qKpx0aSkd2Je7/uiiqamZnR2dmFw8Hf4/X6hgYFB3LnTiTNnmlBSUorsbC+SktbFVNUUZYwvMsbnCfhakpSY2Zygud2bkZ9fID7z+vU29Pf/hpGREUxMTAgFAiPw+frR2noNx44dx759+XC7UxEf/5ZGDMZ4lICaLOtgtdqwdet7KC7+HI2N36GrqxtPnjzB2Ng4xseXRfbjx4/R2dmJhoYGFBV9hoyMrbBYEkEMYhFQPNjtLrGDR458hfPnf0Bvby+GhoZFZWNjY0LPnk3A7x/C/fu/4ty5c2LTduzYBZvNuQqEAHKuh9O5BtnZOSgvr8Dlyz+ir8+H8fFnCAaDmJycFHr+PCgqffCgD5cuXcbRo+XIyvLC4XAJxj+ANLA5OR+gqqoaV6+24tGjR5iamkI4HMbMzAvMzMwIOxicwsOHD3HlyhVUVFTB680RxfwvsKamFjdutGNoaEiAIpEI5ufnhcgmMO14W1ubeLn3P4Da34G1tXVi3oaHhzE9/SdevnyJ2dlZIbKnp6dFb9vb21FdXfNvoNiU13TYnc61GgVpoOmTBwcHMTo6JnpGcBL1dHR0FAMDA+KTqd9Zyz2kot6MTYRz3aLd7opu374zRkNNp6GjowM9Pb+gu7tbtIBENvlu3+5Ac3MLSkq+QGbmjpjN5owSY3Wwg7KsC1uttoX0dM9SYeGnWl3dN6ivb0BjYyNOnfpWtIFENs0oxei5oKBQS0vbsmSxJEZkWbd69GSfJCkBs9kSWr9+41xWljdaUHBAKyoqxsGDh7F/fz52796LPXv2CvvQocOgGMF27cqOJidvmIuPTwhJkvLmcrgoScpdVY1/6nC4Qhs3pix4PBnRbdsyNY8nQ9yDSUnrhMgmH8W2bMmIUq7d7qJb6qkkKT+vXl90wTYriuGuyWQOWCy2sN3uXHQ4XLHERDvM5gSoqkmIbPJRjHIslsSw0WgOKIqBYM2MyV9ThR8yppRLku6CLOt9iqIGdTo1otOpMUUxaJzrIEmKEI0G+XQ69TXlUC6tkSSqbPkX8BfG+8ya8i1YEAAAAABJRU5ErkJggg==",
+          "file": "/assets/blur/logo.blur.png"
+        },
+        "size": 52628
+      }
+    },
     "videos": {},
-    "favicon": null
+    "favicon": {
+      "source": "assets-src/logo.png",
+      "outputDir": "public"
+    }
   },
-  "timestamp": null
+  "timestamp": "2026-09-05T23:40:09.212Z"
 }

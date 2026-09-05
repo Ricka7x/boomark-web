@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const LINKS = [
@@ -9,7 +10,8 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="font-semibold text-lg tracking-tight">
+        <Link href="/" className="flex items-center gap-2 font-semibold text-lg tracking-tight">
+          <Image src="/assets/logo.webp" alt="" width={28} height={28} priority />
           Boomark
         </Link>
 

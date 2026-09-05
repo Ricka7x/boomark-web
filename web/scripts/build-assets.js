@@ -215,6 +215,18 @@ function processFavicon(allFiles) {
     const cmd = `npx asset-forge favicon "${sourcePath}" "${faviconOutputDir}"`;
     execSync(cmd, { stdio: 'inherit', cwd: ROOT_DIR });
 
+    // asset-forge's favicon command leaves name/short_name blank; fill them
+    // in from config so the manifest doesn't need hand-editing after every
+    // rebuild (it would just get overwritten again next time).
+    const manifestPath = path.join(faviconOutputDir, 'site.webmanifest');
+    if (fs.existsSync(manifestPath)) {
+      const webmanifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+      const appName = config.favicon.appName || config.name;
+      webmanifest.name = appName;
+      webmanifest.short_name = appName;
+      fs.writeFileSync(manifestPath, JSON.stringify(webmanifest, null, 2));
+    }
+
     assetManifest.assets.favicon = {
       source: path.relative(ROOT_DIR, sourcePath),
       outputDir: path.relative(ROOT_DIR, faviconOutputDir),

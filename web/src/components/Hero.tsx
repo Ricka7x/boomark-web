@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { DOWNLOAD_URL } from "@/lib/constants";
 
 export default function Hero() {
   return (
     <section className="max-w-3xl mx-auto px-6 pt-24 pb-16 text-center">
+      <Image src="/assets/logo.webp" alt="Boomark" width={96} height={96} priority className="mx-auto mb-8" />
       <h1 className="text-5xl sm:text-6xl font-semibold tracking-tight">
         Boomark
       </h1>

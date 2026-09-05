@@ -16,6 +16,15 @@ export const metadata: Metadata = {
   title: `${APP_NAME} | Placeholder Tagline`,
   description: "Placeholder description. Replace with real marketing copy.",
   authors: [{ name: `${APP_NAME} Team` }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: `${APP_NAME} | Placeholder Tagline`,
     description: "Placeholder description. Replace with real marketing copy.",
@@ -61,6 +70,7 @@ export default function RootLayout({
                   "@type": "Organization",
                   name: APP_NAME,
                   url: `${SITE_URL}/`,
+                  logo: `${SITE_URL}/assets/logo.webp`,
                 },
               ],
             }),
