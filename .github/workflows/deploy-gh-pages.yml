@@ -1,0 +1,79 @@
+name: Deploy Next.js App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Detect latest version and update constants
+        run: |
+          LATEST_FILE=$(ls releases/Boomark-*.dmg 2>/dev/null | sort -V | tail -n 1 || true)
+          if [ -n "$LATEST_FILE" ]; then
+            LATEST_VERSION=$(basename "$LATEST_FILE" .dmg | sed 's/Boomark-//')
+            echo "Detected latest version: $LATEST_VERSION"
+            sed -i "s/LATEST_VERSION = \".*\"/LATEST_VERSION = \"$LATEST_VERSION\"/" web/src/lib/constants.ts
+          else
+            echo "No releases found yet, skipping version detection."
+          fi
+
+      - name: Install dependencies
+        run: |
+          cd web
+          npm ci
+
+      - name: Cache converted assets
+        id: asset-cache
+        uses: actions/cache@v4
+        with:
+          path: web/public/assets
+          key: assets-${{ hashFiles('web/assets-src/**') }}
+
+      - name: Build assets
+        if: steps.asset-cache.outputs.cache-hit != 'true'
+        run: |
+          cd web
+          npm run assets:build
+
+      - name: Build Next.js app
+        run: |
+          cd web
+          npm run build
+
+      - name: Copy releases to export output
+        run: |
+          if [ -d releases ] && [ "$(ls -A releases 2>/dev/null)" ]; then
+            cp -R releases web/out/releases
+          else
+            echo "No releases yet, skipping."
+          fi
+
+      - name: Copy CNAME to export output
+        run: |
+          if [ -f web/CNAME ]; then
+            cp web/CNAME web/out/CNAME
+          else
+            echo "No CNAME file yet (no domain set up), skipping."
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web/out
+          publish_branch: gh-pages
+          force_orphan: true
