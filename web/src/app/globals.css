@@ -1,19 +1,77 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Workbench · theme: custom · nav: N5 · footer: Ft2
+ * theme: custom · vibe: "monochrome command tool, one violet signal" · anchor: #bb7bff (user-locked)
+ * paper: oklch(98.5% 0.006 300) · accent-fill: #bb7bff · display: Geist Sans · body: Geist Sans · outlier: Geist Mono
+ * axes: light / geometric-sans / chromatic-other (violet ~300°) · studied: partial (hero + wordmark-band, source: url https://bookmarker.cc/) · context: explicit
+ */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
+  /* Fixed brand purple: the user's exact anchor hex, never recoloured per mode.
+     Always paired with the fixed dark ink below, in both light and dark mode. */
+  --color-accent-fill: #bb7bff;
+  --color-accent-fill-foreground: oklch(17% 0.01 300);
+
+  /* Secondary fixed accents (lime, pink), for bento-style cells that want colour
+     variety. Same fixed dark ink as the purple fill works on all of these. */
+  --color-accent-fill-2: #c1f533;
+  --color-accent-fill-3: #da568a;
+  --color-accent-fill-3-soft: #f5c3e4;
+  --color-accent-fill-4: #92a4ff;
+
+  /* Fixed dark surface family, for sections/cells that stay black regardless of
+     page mode (Features, CTA, Footer) rather than toggling with system theme. */
+  --color-night: oklch(15% 0.012 300);
+  --color-night-foreground: oklch(95% 0.008 300);
+  --color-night-surface: oklch(20% 0.014 300);
+  --color-night-border: oklch(30% 0.012 300);
+
+  /* Swappable per color-scheme below. Declared here (not `@theme inline`) so
+     Tailwind's generated utilities reference the custom property at runtime
+     instead of inlining the light-mode literal at build time. */
+  --color-background: oklch(98.5% 0.006 300);
+  --color-foreground: oklch(17% 0.01 300);
+  --color-surface: oklch(96% 0.008 300);
+  --color-surface-strong: oklch(93% 0.01 300);
+  --color-border: oklch(85% 0.01 300);
+  --color-muted: oklch(46% 0.012 300);
+  --color-accent: #a855f7;
+  --color-primary: #a855f7;
+  --color-primary-hover: #9333ea;
+  --color-focus: oklch(70% 0.21 300);
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
 }
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #18181b;
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
 }
+
+/* Light-mode only, deliberately: the site stays on a white/paper canvas with
+   colour reserved for accents (the purple/lime/pink/periwinkle bento fills and
+   the fixed dark "night" card), rather than flipping the whole page dark with
+   the visitor's system theme. */
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -23,10 +81,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
+  overflow-x: clip;
 }
 
 h1, h2, h3 {
   text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 p {
@@ -34,11 +94,70 @@ p {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
   border-radius: 4px;
+  transition: none;
 }
 
 .divider {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--color-border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out),
+    opacity var(--dur-short) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-1.5px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.btn-primary:hover {
+  opacity: 0.88;
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground);
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface);
+}
+
+kbd {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 150ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 150ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:hover, .btn:active {
+    transform: none;
+  }
 }

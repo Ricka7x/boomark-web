@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { SITE_URL, APP_NAME } from "@/lib/constants";
 
 import Footer from "../components/Footer";
@@ -11,10 +13,14 @@ import Script from "next/script";
 // this snippet entirely if a different analytics stack is used instead.
 const GA_MEASUREMENT_ID = "";
 
+const TAGLINE = "Search your bookmarks like you search your apps.";
+const DESCRIPTION =
+  "Boomark is a command-palette bookmark manager for Mac. Search in a few keystrokes, pin your favorites, and let the first five get ⌘1–⌘5 automatically.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: `${APP_NAME} | Placeholder Tagline`,
-  description: "Placeholder description. Replace with real marketing copy.",
+  title: `${APP_NAME} | ${TAGLINE}`,
+  description: DESCRIPTION,
   authors: [{ name: `${APP_NAME} Team` }],
   icons: {
     icon: [
@@ -26,8 +32,8 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: `${APP_NAME} | Placeholder Tagline`,
-    description: "Placeholder description. Replace with real marketing copy.",
+    title: `${APP_NAME} | ${TAGLINE}`,
+    description: DESCRIPTION,
     url: `${SITE_URL}/`,
     siteName: APP_NAME,
     locale: "en_US",
@@ -35,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${APP_NAME} | Placeholder Tagline`,
-    description: "Placeholder description. Replace with real marketing copy.",
+    title: `${APP_NAME} | ${TAGLINE}`,
+    description: DESCRIPTION,
   },
   alternates: {
     canonical: "/",
@@ -49,7 +55,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
       <head>
         <link rel="alternate" type="application/rss+xml" title={`${APP_NAME} Blog RSS Feed`} href="/feed.xml" />
         <script
@@ -63,8 +74,14 @@ export default function RootLayout({
                   name: APP_NAME,
                   operatingSystem: "macOS",
                   applicationCategory: "ProductivityApplication",
-                  description: "Placeholder description. Replace with real marketing copy.",
+                  description: DESCRIPTION,
                   url: `${SITE_URL}/`,
+                  offers: {
+                    "@type": "Offer",
+                    price: "7",
+                    priceCurrency: "USD",
+                    description: "One-time purchase, no subscription",
+                  },
                 },
                 {
                   "@type": "Organization",
@@ -80,7 +97,7 @@ export default function RootLayout({
       <body className="antialiased" suppressHydrationWarning>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-foreground focus:text-background focus:px-4 focus:py-2 focus:rounded-lg"
         >
           Skip to content
         </a>

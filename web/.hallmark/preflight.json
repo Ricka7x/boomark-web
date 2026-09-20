@@ -1,0 +1,10 @@
+{
+  "scannedAt": "2026-09-20",
+  "fontStack": "Geist Sans + Geist Mono via next/font/local (geist package), package.json",
+  "palette": "Tailwind v4 @theme custom properties, src/app/globals.css :root",
+  "motion": "motion (motion/react) installed, package.json",
+  "spacing": "Tailwind default scale prior to this run; Hallmark 4pt --space-* scale added in globals.css",
+  "framework": "Next.js 16 (App Router, static export via output: \"export\")",
+  "preserved": ["font stack (Geist Sans + Geist Mono)", "Tailwind v4 + @theme token architecture", "route structure", "existing non-homepage pages (blog, help, privacy, terms)"],
+  "introduced": ["Workbench macrostructure", "N5 floating-pill nav", "Ft2 inline single-line footer", "OKLCH-tinted token values", "4pt spacing/easing/duration token scale"]
+}

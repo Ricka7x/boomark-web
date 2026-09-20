@@ -1,0 +1,21 @@
+[
+  {
+    "date": "2026-09-20",
+    "macrostructure": "Workbench",
+    "theme": "custom",
+    "theme_axes": "light / geometric-sans / chromatic-other (violet ~300°)",
+    "vibe": "monochrome command tool, one violet signal",
+    "enrichment": "video placeholder (hero), image placeholders (walkthrough steps)",
+    "nav": "N5 Floating pill",
+    "footer": "Ft2 Inline single line",
+    "studiedDna": { "source": "url", "url": "https://bookmarker.cc/", "adopted": ["centered manifesto-style hero with icon badge", "large media anchor beneath headline"], "notAdopted": ["3-equal-column pastel feature cards", "multi-hue accent tinting", "pricing section", "oversized wordmark footer moment (tried, user flagged as too direct a copy, removed)", "literal copy"] },
+    "revisions": [
+      "hand-built walkthrough mockups (shortcuts list, pin card) read as low-fidelity; replaced all three walkthrough visuals with honest image placeholders",
+      "removed oversized wordmark band above footer per user: too close to the studied reference",
+      "closing CTA rebuilt as a rounded accent-fill card, fixed-dark text, fixed-black pill button, per explicit user spec",
+      "surfaces bento's row-span-2 cell only worked with 3 columns and had none, leaving dead space; flattened to an equal 3-column grid",
+      "Browser icon read ambiguously (looked like a credit card); swapped for PuzzlePiece, the conventional browser-extension glyph"
+    ],
+    "brief": "Boomark · macOS command-palette bookmark manager, redesign from a generic Bento/Hero/CTA first pass, hero DNA partially studied from a user-supplied reference, then refined against direct user feedback"
+  }
+]
