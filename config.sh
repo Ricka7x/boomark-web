@@ -36,7 +36,13 @@ EXPORT_PATH="$BUILD_DIR/Export"
 # Release configuration
 RELEASES_DIR="$PROJECT_ROOT/releases"
 WEBSITE_URL="https://boomarkapp.com"
-DOWNLOAD_URL_PREFIX="$WEBSITE_URL/releases"
+
+# Shared Cloudflare R2 release hosting (see macos-release-tools config.example.sh
+# for details). DOWNLOAD_URL_PREFIX points at the R2 bucket's custom domain so
+# Sparkle appcast URLs resolve there instead of this repo's own releases/ dir.
+R2_BUCKET="app-releases"
+R2_PREFIX="$APP_NAME"
+DOWNLOAD_URL_PREFIX="https://dl.66labs.dev/$APP_NAME"
 
 # ============================================================================
 # SPARKLE SETTINGS
