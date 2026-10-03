@@ -7,7 +7,7 @@
 # Update these values to match your project setup.
 #
 # SECURITY NOTE:
-# - Public URLs (https://boomarkapp.com) are safe to commit
+# - Public URLs (https://66labs.dev) are safe to commit
 # - API keys, private keys, and credentials should use environment variables
 # - See .env.local (in .gitignore) for sensitive overrides
 #
@@ -35,7 +35,10 @@ EXPORT_PATH="$BUILD_DIR/Export"
 
 # Release configuration
 RELEASES_DIR="$PROJECT_ROOT/releases"
-WEBSITE_URL="https://boomarkapp.com"
+# Boomark's home is the 66 labs catalog (not a dedicated domain, it's a new,
+# pre-launch app). See macos-app-release-pipeline skill for the catalog-vs-
+# dedicated-domain decision.
+WEBSITE_URL="https://66labs.dev/apps/boomark"
 
 # Shared Cloudflare R2 release hosting (see macos-release-tools config.example.sh
 # for details). DOWNLOAD_URL_PREFIX points at the R2 bucket's custom domain so
