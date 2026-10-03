@@ -91,7 +91,9 @@ EXPORT_OPTIONS_PLIST="$BUILD_DIR/ExportOptions.plist"
 # NOTARIZATION SETTINGS
 # ============================================================================
 
-NOTARY_PROFILE="${NOTARY_PROFILE:-}"
+# Same Apple Developer team/account as Snapback (same Developer ID cert), so
+# the keychain profile is shared rather than creating a separate one.
+NOTARY_PROFILE="${NOTARY_PROFILE:-snapback-notary}"
 
 # ============================================================================
 # LOGGING AND DEBUGGING
