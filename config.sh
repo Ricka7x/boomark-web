@@ -63,9 +63,13 @@ DOWNLOAD_URL_PREFIX="https://dl.66labs.dev/$APP_NAME"
 #   ./scripts/build-and-release.sh
 
 # The app's public EdDSA key (from Sparkle's generate_keys tool), injected
-# into Info.plist's SUPublicEDKey during notarization. TODO: fill in once
-# Sparkle is added to the app.
-SPARKLE_ED_PUBLIC_KEY="${SPARKLE_ED_PUBLIC_KEY:-}"
+# into Info.plist's SUPublicEDKey during notarization.
+SPARKLE_ED_PUBLIC_KEY="${SPARKLE_ED_PUBLIC_KEY:-PzmWQhXGG0+73EZgZmhNwwN5gZ2VzT7ukN8L0HWs9f8=}"
+
+# Boomark's Sparkle private key lives under its own keychain account (not the
+# shared "ed25519" default), so it never collides with Snapback's key on the
+# same Mac.
+SPARKLE_ACCOUNT="${SPARKLE_ACCOUNT:-boomark}"
 
 # Optional EdDSA private key file for signing releases
 SPARKLE_ED_KEY_FILE="${SPARKLE_ED_KEY_FILE:-}"
